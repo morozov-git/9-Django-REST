@@ -8,4 +8,4 @@ class User(models.Model):
 	image = models.ImageField(upload_to='user_image', max_length=2000, blank=True)
 	age = models.PositiveIntegerField(verbose_name='age', default=18)
 	email = models.EmailField(verbose_name='email', unique=True)
-	is_active = models.BooleanField(_('is_active'), default=True)
+	is_active = models.BooleanField(verbose_name='is_active', default=True)
