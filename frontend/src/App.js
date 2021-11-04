@@ -30,9 +30,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <MenuFixed menu={this.state.menu}/>
+                <MenuFixed/>
                 <UserList users={this.state.users}/>
-                <Footer footer={this.state.footer}/>
+                <Footer/>
             </div>
         )
     }
