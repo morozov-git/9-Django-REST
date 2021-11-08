@@ -8,4 +8,4 @@ class ProjectModelSerializer(ModelSerializer):
 	class Meta:
 		model = Project
 		# fields = '__all__'
-		fields = ['name', 'description_project', 'todo_link', 'owner', 'is_active']
+		fields = ['name', 'description_project',  'owner', 'is_active']

@@ -3,9 +3,9 @@ import React from 'react'
 
 const Footer = ({footer}) => {
     return (
-        <footer className= "footer">
+        <footer className= "todo-footer">
 
-                <table className= "footer_contain">TO-DO LIST 2021</table>
+                <table className= "todo-footer_contain">TO-DO LIST 2021</table>
 
         </footer>
 

@@ -7,11 +7,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.margin-top {
+.todo-margin-top {
     margin-top: 55px;
 }
 
-.footer {
+.todo-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -21,7 +21,7 @@ body {
     align-items: center;
 }
 
-.footer_contain {
+.todo-footer_contain {
     height: 2em;
     display: flex;
     align-items: center;

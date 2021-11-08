@@ -7,7 +7,7 @@ from .models import ToDo
 from .serializers import ToDoModelSerializer
 
 
-class TodoModelViewSet(ModelViewSet):
+class ToDoModelViewSet(ModelViewSet):
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
 	queryset = ToDo.objects.all()
 	serializer_class = ToDoModelSerializer
