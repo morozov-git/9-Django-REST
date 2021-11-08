@@ -8,7 +8,12 @@ body {
 }
 
 .todo-margin-top {
-    margin-top: 55px;
+    margin-top: 0px;
+}
+
+.menu-padding-bottom {
+    margin-bottom: 55px;
+    /*padding-bottom: 55px;*/
 }
 
 .todo-footer {

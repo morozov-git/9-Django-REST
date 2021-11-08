@@ -1,6 +1,5 @@
 from django.db import models
 from users.models import User
-# from todo.models import ToDo
 # Create your models here.
 
 
