@@ -19,7 +19,7 @@ const UserItem = ({user}) => {
 
 const UserList = ({users}) => {
     return (
-        <table>
+        <table className= "margin-top">
             <th>
                 First name
             </th>
