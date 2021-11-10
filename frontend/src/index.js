@@ -5,7 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import 'bootstrap/dist/js/bootstrap.min'
 // import 'bootstrap/dist/css/bootstrap.min.css' //для компонентов, установленных через команду  'npm install bootstrap'
-import './bootstrap/js/bootstrap.min.js.map'
+
+
+import './bootstrap/js/bootstrap.esm.js'
 import './bootstrap/css/bootstrap.min.css' //для локальных компонентов
 
 ReactDOM.render(

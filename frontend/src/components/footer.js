@@ -3,12 +3,11 @@ import React from 'react'
 
 const Footer = ({footer}) => {
     return (
-        <footer className= "todo-footer">
-
-                <table className= "todo-footer_contain">TO-DO LIST 2021</table>
-
-        </footer>
-
+        <div className="full_page">
+            <footer className="todo-footer todo-footer_contain">
+                TODO_List 2021
+            </footer>
+        </div>
     )
 }
 

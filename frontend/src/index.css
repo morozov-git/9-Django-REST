@@ -5,6 +5,9 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    padding-top: 56px;
+    /*height: 100vh;*/
 }
 
 .todo-margin-top {
@@ -17,6 +20,8 @@ body {
 }
 
 .todo-footer {
+    /*position: -webkit-sticky;*/
+    /*position: sticky;*/
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -36,4 +41,30 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+/*.container {*/
+/*    width: auto;*/
+/*    max-width: 680px;*/
+/*    padding: 0 15px;*/
+/*}*/
+
+.full_page {
+    margin: 0;
+    height: 100%;
+    /*padding: 0% 0 0 0;*/
 }
