@@ -9,3 +9,6 @@ class User(AbstractUser):
 	last_name = models.CharField(max_length=64)
 	email = models.EmailField(verbose_name='email', unique=True)
 	is_active = models.BooleanField(verbose_name='is_active', default=True)
+
+	def __str__(self):
+		return self.username

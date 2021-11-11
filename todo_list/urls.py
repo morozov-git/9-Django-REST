@@ -16,18 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from users.views import UserModelViewSet
-from todo.views import ToDoModelViewSet
+from users.views import UserCustomViewSet, UserDjangoFilterViewSet, UserLimitOffsetPaginationViewSet
+# from users.views import UserModelViewSet
+from todo.views import ToDoCustomViewSet, ToDoDjangoFilterViewSet, ToDoLimitOffsetPaginationViewSet
 from project.views import ProjectModelViewSet
+from users import views
 
 router = DefaultRouter()
-router.register('users', UserModelViewSet)
-router.register('todo', ToDoModelViewSet)
+# router.register('users', UserModelViewSet)
+# router.register('todo', ToDoModelViewSet)
+router.register('todo', ToDoCustomViewSet)
+router.register('todo_page', ToDoLimitOffsetPaginationViewSet)
+router.register('todo_filter', ToDoDjangoFilterViewSet)
 router.register('project', ProjectModelViewSet)
+router.register('users', views.UserCustomViewSet, basename='users')
+router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users')
+router.register('users_filter', UserDjangoFilterViewSet)
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('api-auth/', include('rest_framework.urls')),
 	path('api/', include(router.urls)),
+	# path('users/api-view/', views.UserAPIVIew.as_view()),
+	# path('users/generic/retrieve/<int:pk>/', views.UserRetrieveAPIView.as_view())
+	# path('users/viewsets/', include(router.urls)),
 
 ]
