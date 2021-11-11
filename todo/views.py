@@ -45,7 +45,8 @@ class ToDoCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin, Up
 # 		return ToDo
 
 
-##############DjangoFilter
+#############
+#   DjangoFilter
 class ToDoDjangoFilterViewSet(ToDoCustomViewSet):
 	queryset = ToDo.objects.all()
 	serializer_class = ToDoModelSerializer

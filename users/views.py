@@ -100,7 +100,8 @@ class UserCustomViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
 # 		return User
 
 
-##############DjangoFilter
+#############
+# DjangoFilter
 class UserDjangoFilterViewSet(ModelViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserModelSerializer
