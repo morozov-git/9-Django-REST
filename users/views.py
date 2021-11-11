@@ -5,7 +5,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, \
 	get_object_or_404
-from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin
+from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, DestroyModelMixin
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.viewsets import ModelViewSet, GenericViewSet, ViewSet
 from .models import User
@@ -80,9 +80,8 @@ from rest_framework.decorators import action
 # 		return Response(serializer.data)
 
 ####################
-
-
-class UserCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin, GenericViewSet):
+#class UserCustomViewSet(CreateModelMixin, UpdateModelMixin, ListModelMixin, RetrieveModelMixin, DestroyModelMixin, GenericViewSet):
+class UserCustomViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserModelSerializer
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
