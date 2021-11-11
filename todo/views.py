@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+from rest_framework import status
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin, \
 	DestroyModelMixin
 from rest_framework.pagination import LimitOffsetPagination
@@ -24,6 +25,12 @@ class ToDoCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin, Up
 	serializer_class = ToDoModelSerializer
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
 
+	def destroy(self, request, *args, **kwargs):
+		todo = self.get_object()
+		todo.is_close = True
+		todo.save()
+		serializer = self.get_serializer(todo)
+		return Response(serializer.data)
 
 #######################
 # class ToDoModelViewSet(ModelViewSet):
@@ -39,7 +46,7 @@ class ToDoCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin, Up
 
 
 ##############DjangoFilter
-class ToDoDjangoFilterViewSet(ModelViewSet):
+class ToDoDjangoFilterViewSet(ToDoCustomViewSet):
 	queryset = ToDo.objects.all()
 	serializer_class = ToDoModelSerializer
 	# filterset_fields = ['id', 'name', 'description_todo']

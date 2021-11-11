@@ -24,16 +24,16 @@ from users import views
 
 router = DefaultRouter()
 # router.register('todo', ToDoModelViewSet)
-router.register('todo', ToDoCustomViewSet)
-router.register('todo_page', ToDoLimitOffsetPaginationViewSet)
+router.register('todo', ToDoCustomViewSet, basename='todo')
+# router.register('todo_page', ToDoLimitOffsetPaginationViewSet, basename='todo')
 router.register('todo_filter', ToDoDjangoFilterViewSet)
 # router.register('project', ProjectModelViewSet)
-router.register('Project', ProjectCustomViewSet)
+router.register('Project', ProjectCustomViewSet, basename='project')
 router.register('Project_page', ProjectLimitOffsetPaginationViewSet)
 router.register('Project_filter', ProjectDjangoFilterViewSet)
 # router.register('users', UserModelViewSet)
-router.register('users', views.UserCustomViewSet, basename='users')
-router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users')
+router.register('users', UserCustomViewSet, basename='users')
+# router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users')
 router.register('users_filter', UserDjangoFilterViewSet)
 
 urlpatterns = [
