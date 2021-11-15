@@ -33,7 +33,7 @@ router.register('project_page', ProjectLimitOffsetPaginationViewSet)
 router.register('project_filter', ProjectDjangoFilterViewSet)
 # router.register('users', UserModelViewSet)
 router.register('users', UserCustomViewSet, basename='users')
-# router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users')
+router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users')
 router.register('users_filter', UserDjangoFilterViewSet)
 
 urlpatterns = [

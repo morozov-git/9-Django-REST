@@ -28,7 +28,7 @@ class App extends React.Component {
                 const users = response.data
                 this.setState(
                     {
-                        'users': users
+                        'users': users.results
                     }
                 )
             }).catch(error => console.log(error))
@@ -38,7 +38,7 @@ class App extends React.Component {
                 const todo_list = response.data
                 this.setState(
                     {
-                        'todo_list': todo_list
+                        'todo_list': todo_list.results
                     }
                 )
             }).catch(error => console.log(error))
@@ -48,7 +48,7 @@ class App extends React.Component {
                 const projects = response.data
                 this.setState(
                     {
-                        'projects': projects
+                        'projects': projects.results
                     }
                 )
             }).catch(error => console.log(error))
@@ -78,7 +78,9 @@ class App extends React.Component {
                         <Route exact path='/' component={() => <UserList users={this.state.users}/>} />
                         <Route exact path='/todo_list' component={() => <ToDoList todo_list={this.state.todo_list}/>} />
                         <Route exact path='/projects' component={() =><ProjectList projects={this.state.projects}/>} />
-
+                        <Route path='/project/:id'>
+                            {/*<ToDoList_Project todo_list={this.state.todo_list}/>}/>*/}
+                        </Route>
                         <Redirect from='/users' to='/' />
                         <Route component={NotFound404} />
                     </Switch>
