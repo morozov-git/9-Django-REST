@@ -25,16 +25,16 @@ from users import views
 router = DefaultRouter()
 # router.register('todo', ToDoModelViewSet)
 router.register('todo', ToDoCustomViewSet, basename='todo')
-# router.register('todo_page', ToDoLimitOffsetPaginationViewSet, basename='todo')
-router.register('todo_filter', ToDoDjangoFilterViewSet)
+router.register('todo_page', ToDoLimitOffsetPaginationViewSet, basename='todo_page')
+router.register('todo_filter', ToDoDjangoFilterViewSet, basename='todo_filter')
 # router.register('project', ProjectModelViewSet)
 router.register('project', ProjectCustomViewSet, basename='project')
-router.register('project_page', ProjectLimitOffsetPaginationViewSet)
-router.register('project_filter', ProjectDjangoFilterViewSet)
+router.register('project_page', ProjectLimitOffsetPaginationViewSet, basename='project_page')
+router.register('project_filter', ProjectDjangoFilterViewSet, basename='project_filter')
 # router.register('users', UserModelViewSet)
 router.register('users', UserCustomViewSet, basename='users')
-router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users')
-router.register('users_filter', UserDjangoFilterViewSet)
+router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users_page')
+router.register('users_filter', UserDjangoFilterViewSet, basename='users_filter')
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
