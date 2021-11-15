@@ -6,8 +6,9 @@ import ToDoList from './components/todo.js'
 import ProjectList from './components/project.js'
 import MenuFixed from './components/menu.js'
 import Footer from './components/footer.js'
+import NotFound404 from "./components/NotFound404.js";
 import axios from 'axios'
-import {HashRouter, Route, BrowserRouter, Link} from 'react-router-dom'
+import {HashRouter, Route, BrowserRouter, Link, Switch} from 'react-router-dom'
 
 
 
@@ -73,9 +74,13 @@ class App extends React.Component {
                             </li>
                         </ul>
                     </nav>
-                    <Route exact path='/' component={() => <UserList users={this.state.users}/>} />
-                    <Route exact path='/todo_list' component={() => <ToDoList todo_list={this.state.todo_list}/>} />
-                    <Route exact path='/projects' component={() =><ProjectList projects={this.state.projects}/>} />
+                    <Switch>
+                        <Route exact path='/' component={() => <UserList users={this.state.users}/>} />
+                        <Route exact path='/todo_list' component={() => <ToDoList todo_list={this.state.todo_list}/>} />
+                        <Route exact path='/projects' component={() =><ProjectList projects={this.state.projects}/>} />
+                        <Route component={NotFound404} />
+                    </Switch>
+
                 </HashRouter>
 
                 <Footer/>
