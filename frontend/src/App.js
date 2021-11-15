@@ -61,19 +61,19 @@ class App extends React.Component {
                 <MenuFixed/>
                 {/*<UserList users={this.state.users}/>*/}
                 <HashRouter>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to='/'>Users</Link>
-                            </li>
-                            <li>
-                                <Link to='/todo_list'>ToDo List</Link>
-                            </li>
-                            <li>
-                                <Link to='/projects'>Projects</Link>
-                            </li>
-                        </ul>
-                    </nav>
+                    {/*<nav>*/}
+                    {/*    <ul>*/}
+                    {/*        <li>*/}
+                    {/*            <Link to='/'>Users</Link>*/}
+                    {/*        </li>*/}
+                    {/*        <li>*/}
+                    {/*            <Link to='/todo_list'>ToDo List</Link>*/}
+                    {/*        </li>*/}
+                    {/*        <li>*/}
+                    {/*            <Link to='/projects'>Projects</Link>*/}
+                    {/*        </li>*/}
+                    {/*    </ul>*/}
+                    {/*</nav>*/}
                     <Switch>
                         <Route exact path='/' component={() => <UserList users={this.state.users}/>} />
                         <Route exact path='/todo_list' component={() => <ToDoList todo_list={this.state.todo_list}/>} />

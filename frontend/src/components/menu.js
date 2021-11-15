@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 
 const MenuFixed = ({menu}) => {
@@ -15,13 +16,16 @@ const MenuFixed = ({menu}) => {
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <ul className="navbar-nav me-auto mb-2 mb-md-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                {/*<a className="nav-link active" aria-current="page" href="#">Home</a>*/}
+                                <a className="nav-link active" aria-current="page" href='/#/'>Users</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">ToDoName</a>
+                                {/*<a className="nav-link" href="#">ToDoName</a>*/}
+                                <a className="nav-link active" aria-current="page" href='/#/todo_list'>ToDo List</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">ProjectName</a>
+                                {/*<a className="nav-link" href="#">ProjectName</a>*/}
+                                <a className="nav-link active" aria-current="page" href='/#/projects'>Projects</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link disabled">Login</a>
