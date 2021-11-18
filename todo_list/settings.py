@@ -51,7 +51,6 @@ INSTALLED_APPS = [
 	'project',
 	'django_filters',
 	'rest_framework.authtoken'
-	# 'rest_framework_simplejwt',
 
 ]
 
