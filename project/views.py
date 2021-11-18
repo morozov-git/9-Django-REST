@@ -4,6 +4,7 @@ from django.shortcuts import render
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin, \
 	DestroyModelMixin
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.permissions import AllowAny
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from .models import Project
