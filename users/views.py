@@ -86,7 +86,7 @@ class UserCustomViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
 	queryset = User.objects.all()
 	serializer_class = UserModelSerializer
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
-	permission_classes = [AllowAny]
+	# permission_classes = [AllowAny]
 
 #######################
 # class UserModelViewSet(ModelViewSet):

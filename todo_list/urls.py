@@ -22,6 +22,7 @@ from users.views import UserCustomViewSet, UserDjangoFilterViewSet, UserLimitOff
 from todo.views import ToDoCustomViewSet, ToDoDjangoFilterViewSet, ToDoLimitOffsetPaginationViewSet
 from project.views import ProjectCustomViewSet, ProjectDjangoFilterViewSet, ProjectLimitOffsetPaginationViewSet
 from users import views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = DefaultRouter()
 # router.register('todo', ToDoModelViewSet)
@@ -42,6 +43,8 @@ urlpatterns = [
 	path('api-auth/', include('rest_framework.urls')),
 	path('api/', include(router.urls)),
 	path('api-token-auth', obtain_auth_token),
+	path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 	# path('users/api-view/', views.UserAPIVIew.as_view()),
 	# path('users/generic/retrieve/<int:pk>/', views.UserRetrieveAPIView.as_view())
 	# path('users/viewsets/', include(router.urls)),
