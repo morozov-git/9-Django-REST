@@ -34,7 +34,11 @@ class App extends React.Component {
                         'users': users.results
                     }
                 )
-            }).catch(error => console.log(error))
+            }).catch(error => {
+                console.log(error)
+                this.setState({'users': []})
+            })
+
 
         axios.get('http://127.0.0.1:8000/api/todo_filter/', {headers})
             .then(response => {
@@ -44,7 +48,12 @@ class App extends React.Component {
                         'todo_list': todo_list.results
                     }
                 )
-            }).catch(error => console.log(error))
+            }).catch(error => {
+                console.log(error)
+                this.setState({'todo_list': []})
+            })
+
+
 
         axios.get('http://127.0.0.1:8000/api/project_filter/', {headers})
             .then(response => {
@@ -54,7 +63,10 @@ class App extends React.Component {
                         'projects': projects.results
                     }
                 )
-            }).catch(error => console.log(error))
+            }).catch(error => {
+                console.log(error)
+                this.setState({'projects': []})
+            })
     }
 
 
@@ -157,6 +169,9 @@ class App extends React.Component {
                 {/*<UserList users={this.state.users}/>*/}
 
                 <HashRouter>
+                    {this.is_auth() ? <Link className="dropdown-item" onClick={() => this.logout()}> Logout</Link>:
+                                        <Link className="dropdown-item" to='/login'>Login</Link>
+                                    }
                     <MenuFixed/>
 
                     {/*<nav>*/}
@@ -187,6 +202,8 @@ class App extends React.Component {
 
                         <Route path='/login' component={() => <LoginForm
                             get_token={(username, password) => this.get_token(username, password)}/>}/>
+
+
 
                         <Redirect from='/users' to='/'/>
                         <Route component={NotFound404}/>
