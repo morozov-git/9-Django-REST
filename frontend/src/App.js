@@ -77,6 +77,12 @@ class App extends React.Component {
 
     logout() {
         this.set_token('')
+        this.setState({
+            'users': [],
+            'todo_list': [],
+            'projects': [],
+            'token': '',
+        })
     }
 
     set_token(token) {
@@ -95,6 +101,7 @@ class App extends React.Component {
                 console.log(response.data)
                 this.set_token(response.data['token'])
                 console.log(response.data['token'])
+                window.location.href = '/'
                 // // Вариант для LocalStorage
                 // console.log(response.data)
                 // localStorage.setItem('token', response.data.token)
