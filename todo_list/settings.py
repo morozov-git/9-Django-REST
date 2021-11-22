@@ -30,6 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
 	'*',
 	'http://localhost:3000',
+	'http://127.0.0.1:3000',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -48,12 +49,13 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	# my_apps
 	'rest_framework',
+	'rest_framework.authtoken',
 	'users',
 	'corsheaders',
 	'todo',
 	'project',
 	'django_filters',
-	'rest_framework.authtoken'
+
 
 ]
 

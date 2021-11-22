@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.authtoken.views import obtain_auth_token
+# from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
-from users.views import UserCustomViewSet, UserDjangoFilterViewSet, UserLimitOffsetPaginationViewSet
 # from users.views import UserModelViewSet
 from todo.views import ToDoCustomViewSet, ToDoDjangoFilterViewSet, ToDoLimitOffsetPaginationViewSet
 from project.views import ProjectCustomViewSet, ProjectDjangoFilterViewSet, ProjectLimitOffsetPaginationViewSet
-from users import views
+from users.views import UserLimitOffsetPaginationViewSet, UserDjangoFilterViewSet, UserCustomViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.authtoken import views
 
 router = DefaultRouter()
 # router.register('todo', ToDoModelViewSet)
@@ -35,14 +35,14 @@ router.register('project_page', ProjectLimitOffsetPaginationViewSet, basename='p
 router.register('project_filter', ProjectDjangoFilterViewSet, basename='project_filter')
 # router.register('users', UserModelViewSet)
 router.register('users', UserCustomViewSet, basename='users')
-router.register('users_page', views.UserLimitOffsetPaginationViewSet, basename='users_page')
+router.register('users_page', UserLimitOffsetPaginationViewSet, basename='users_page')
 router.register('users_filter', UserDjangoFilterViewSet, basename='users_filter')
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('api-auth/', include('rest_framework.urls')),
 	path('api/', include(router.urls)),
-	path('api-token-auth/', obtain_auth_token),
+	path('api-token-auth/', views.obtain_auth_token),
 	# path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 	# path('users/api-view/', views.UserAPIVIew.as_view()),

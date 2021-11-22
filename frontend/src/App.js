@@ -26,7 +26,7 @@ class App extends React.Component {
 
     load_data() {
         const headers = this.get_headers()
-        axios.get('http://127.0.0.1:8000/api/users/', {headers})
+        axios.get('http://127.0.0.1:8000/api/users_filter/', {headers})
             .then(response => {
                 const users = response.data
                 this.setState(
@@ -36,7 +36,7 @@ class App extends React.Component {
                 )
             }).catch(error => console.log(error))
 
-        axios.get('http://127.0.0.1:8000/api/todo/', {headers})
+        axios.get('http://127.0.0.1:8000/api/todo_filter/', {headers})
             .then(response => {
                 const todo_list = response.data
                 this.setState(
@@ -46,7 +46,7 @@ class App extends React.Component {
                 )
             }).catch(error => console.log(error))
 
-        axios.get('http://127.0.0.1:8000/api/project/', {headers})
+        axios.get('http://127.0.0.1:8000/api/project_filter/', {headers})
             .then(response => {
                 const projects = response.data
                 this.setState(
@@ -68,10 +68,11 @@ class App extends React.Component {
     }
 
     set_token(token) {
-        const cookies = new Cookies()
+        let cookies = new Cookies()
         cookies.set('token', token)
-        this.setState({'token': token}, () => this.load_data())
-
+        // console.log('token', token)
+        // this.setState({'token': token}, ()=>this.load_data())
+        localStorage.setItem('token', token)
     }
 
 
@@ -81,7 +82,7 @@ class App extends React.Component {
             .then(response => {
                 console.log(response.data)
                 this.set_token(response.data['token'])
-
+                console.log(response.data['token'])
                 // // Вариант для LocalStorage
                 // console.log(response.data)
                 // localStorage.setItem('token', response.data.token)
@@ -102,7 +103,7 @@ class App extends React.Component {
             'Content-Type': 'application/json'
         }
         if (this.is_auth()) {
-            headers['Authorization'] = 'token' + this.state.token
+            headers['Authorization'] = 'Token'+ ' ' + this.state.token
         }
         return headers
     }
