@@ -1,6 +1,9 @@
 import React from 'react'
-import {Link} from "react-router-dom";
-
+import {Link, Route} from "react-router-dom";
+// import LoginForm from "./Auth";
+// import axios from 'axios'
+// import {HashRouter, Route, BrowserRouter, Link, Switch, Redirect} from 'react-router-dom'
+// import get_token from "../App.js"
 
 const MenuFixed = ({menu}) => {
     return (
@@ -28,7 +31,8 @@ const MenuFixed = ({menu}) => {
                                 <a className="nav-link active" aria-current="page" href='/#/projects'>Projects</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link disabled">Login</a>
+                                {/*<a className="nav-link disabled">Login</a>*/}
+                                {/*<Link className="nav-link" to='/login'>Login</Link>*/}
                             </li>
 
                             <li className="nav-item dropdown">
@@ -38,7 +42,18 @@ const MenuFixed = ({menu}) => {
                                     <li><a className="dropdown-item" href="#">ToDo</a></li>
                                     <li><a className="dropdown-item" href="#">Projects</a></li>
                                     <li><a className="dropdown-item" href="#">Profile</a></li>
-                                    <li><a className="dropdown-item disabled" href="#">Logout</a></li>
+
+                                    {/*<Route path='/login' component={() =><LoginForm/>}/>*/}
+
+                                    {/*<li><a className="dropdown-item disabled" href="#">Logout</a></li>*/}
+                                    <Link className="dropdown-item" to='/login'>Login</Link>
+
+                                    {/*<LoginForm get_token={(username, password) => this.get_token(username,password)}/>*/}
+
+                                    {/*<Route path='/login' component={() =><LoginForm/>}/>*/}
+
+                                    {/*<Route path='/login' component={() =><LoginForm*/}
+                                    {/*    get_token={(username, password) => this.get_token(username, password)}/>}/>*/}
                                 </ul>
                             </li>
 
