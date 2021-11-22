@@ -26,7 +26,7 @@ class App extends React.Component {
 
     load_data() {
         const headers = this.get_headers()
-        axios.get('http://127.0.0.1:8000/api/users_filter/', {headers})
+        axios.get('http://127.0.0.1:8000/api/users/', {headers})
             .then(response => {
                 const users = response.data
                 this.setState(
@@ -36,11 +36,11 @@ class App extends React.Component {
                 )
             }).catch(error => {
                 console.log(error)
-                this.setState({'users': []})
+                this.setState({users:[]})
             })
 
 
-        axios.get('http://127.0.0.1:8000/api/todo_filter/', {headers})
+        axios.get('http://127.0.0.1:8000/api/todo/', {headers})
             .then(response => {
                 const todo_list = response.data
                 this.setState(
@@ -50,12 +50,12 @@ class App extends React.Component {
                 )
             }).catch(error => {
                 console.log(error)
-                this.setState({'todo_list': []})
+                this.setState({todo_lis:[]})
             })
 
 
 
-        axios.get('http://127.0.0.1:8000/api/project_filter/', {headers})
+        axios.get('http://127.0.0.1:8000/api/project/', {headers})
             .then(response => {
                 const projects = response.data
                 this.setState(
@@ -65,14 +65,14 @@ class App extends React.Component {
                 )
             }).catch(error => {
                 console.log(error)
-                this.setState({'projects': []})
+                this.setState({projects:[]})
             })
     }
 
 
     is_auth() {
-        // return this.state.token != ''
-        return !!this.state.token
+        return this.state.token != ''
+        // return !!this.state.token
     }
 
     logout() {
@@ -169,11 +169,11 @@ class App extends React.Component {
                 {/*<UserList users={this.state.users}/>*/}
 
                 <HashRouter>
+
+                    <MenuFixed/>
                     {this.is_auth() ? <Link className="dropdown-item" onClick={() => this.logout()}> Logout</Link>:
                                         <Link className="dropdown-item" to='/login'>Login</Link>
                                     }
-                    <MenuFixed/>
-
                     {/*<nav>*/}
                     {/*    <ul>*/}
                     {/*        <li>*/}
@@ -198,10 +198,10 @@ class App extends React.Component {
                             {/*<ToDoList_Project todo_list={this.state.todo_list}/>}/>*/}
                         </Route>
 
-                        {/*<Route path='/login' component={() =><LoginForm/>}/>*/}
-
-                        <Route path='/login' component={() => <LoginForm
+                       <Route path='/login' component={() => <LoginForm
                             get_token={(username, password) => this.get_token(username, password)}/>}/>
+
+
 
 
 
