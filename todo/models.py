@@ -12,7 +12,7 @@ class ToDo(models.Model):
 	name = models.CharField(max_length=64)
 	project = models.OneToOneField(max_length=64, blank=True, null=True, to=Project, on_delete=models.CASCADE)
 	description_todo = models.TextField(verbose_name='описание', blank=True, null=True)
-	owner = models.ForeignKey(User, null=False, db_index=True, on_delete=models.CASCADE)
+	# owner = models.ForeignKey(User, null=False, db_index=True, on_delete=models.CASCADE)
 	users = models.ManyToOneRel(User, to=User.id, field_name='Users')
 	link = models.URLField(verbose_name='ссылка', unique=True)
 	is_active = models.BooleanField(verbose_name='is_active', default=True)
