@@ -9,7 +9,7 @@ from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from .models import Project
 from .filters import ProjectFilter
-from .serializers import ProjectModelSerializer
+from .serializers import ProjectModelSerializer, ProjectModelSerializerWithParams
 
 
 # class ProjectModelViewSet(ModelViewSet):
@@ -23,6 +23,12 @@ class ProjectCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
 	queryset = Project.objects.all()
 	serializer_class = ProjectModelSerializer
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
+
+	def get_serializer_class(self):
+		if self.request.version == 'v1':
+			return ProjectModelSerializerWithParams
+		return ProjectModelSerializer
+
 
 
 #######################
