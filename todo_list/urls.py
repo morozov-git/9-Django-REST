@@ -34,7 +34,7 @@ router.register('project', ProjectCustomViewSet, basename='project')
 router.register('project_page', ProjectLimitOffsetPaginationViewSet, basename='project_page')
 router.register('project_filter', ProjectDjangoFilterViewSet, basename='project_filter')
 # router.register('users', UserModelViewSet)
-# router.register('users', UserCustomViewSet, basename='users')
+router.register('users', UserCustomViewSet, basename='users')
 router.register('users_page', UserLimitOffsetPaginationViewSet, basename='users_page')
 router.register('users_filter', UserDjangoFilterViewSet, basename='users_filter')
 
@@ -43,8 +43,8 @@ urlpatterns = [
 	path('api-auth/', include('rest_framework.urls')),
 	path('api/', include(router.urls)),
 	path('api-token-auth/', views.obtain_auth_token),
-	path('api/users/v1/', include('users.urls', namespace='v1')),
-	path('api/users/v2/', include('users.urls', namespace='v2')),
+	# path('api/users/v1/', include('users.urls', namespace='v1')),
+	# path('api/users/v2/', include('users.urls', namespace='v2')),
 	# path('api/<str:version>/users', UserCustomViewSet.as_view({'get': 'list'})),
 	# path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
