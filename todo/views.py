@@ -8,7 +8,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from .models import ToDo
-from .serializers import ToDoModelSerializer, ToDoModelSerializerWithUser
+from .serializers import ToDoModelSerializer, ToDoModelSerializerWithParams
 from .filters import ToDoFilter
 from rest_framework.response import Response
 
@@ -28,7 +28,7 @@ class ToDoCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin, Up
 
 	def get_serializer_class(self):
 		if self.request.version == 'v1':
-			return ToDoModelSerializerWithUser
+			return ToDoModelSerializerWithParams
 		return ToDoModelSerializer
 
 

@@ -14,11 +14,11 @@ class ToDoModelSerializer(ModelSerializer):
 		fields = ['name', 'description_todo']
 
 
-class ToDoModelSerializerWithUser(ModelSerializer):
+class ToDoModelSerializerWithParams(ModelSerializer):
 	class Meta:
 		model = ToDo
 		# fields = '__all__'
-		fields = fields = ['name', 'project', 'description_todo', 'owner', 'is_close', 'is_active']
+		fields = fields = ['name', 'project', 'description_todo', 'is_close', 'is_active']
 
 	def get_tokens_for_todo(model):
 		refresh = RefreshToken.for_todo(model)
