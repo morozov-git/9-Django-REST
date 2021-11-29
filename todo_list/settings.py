@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 	'todo',
 	'project',
 	'django_filters',
+	'drf_yasg',
 
 
 ]
