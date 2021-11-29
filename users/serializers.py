@@ -17,6 +17,20 @@ class UserModelSerializer(ModelSerializer):
 			'access': str(refresh.access_token),
 		}
 
+
+class UserSerializerWithSuperUser(ModelSerializer):
+	class Meta:
+		model = User
+		# fields = '__all__'
+		fields = fields = ['id', 'username', 'first_name', 'last_name', 'email', 'is_superuser', 'is_staff']
+
+	def get_tokens_for_user(model):
+		refresh = RefreshToken.for_user(model)
+
+		return {
+			'refresh': str(refresh),
+			'access': str(refresh.access_token),
+		}
 # class ToDoSerializer(ModelSerializer):
 # 	class Meta:
 # 		model = ToDo

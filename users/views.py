@@ -10,7 +10,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.viewsets import ModelViewSet, GenericViewSet, ViewSet
 from .models import User
-from .serializers import UserModelSerializer
+from .serializers import UserModelSerializer, UserSerializerWithSuperUser
 from .filters import UserFilter
 from django_filters import rest_framework as filters
 from rest_framework.pagination import LimitOffsetPagination
@@ -84,9 +84,17 @@ from rest_framework.decorators import action
 #class UserCustomViewSet(CreateModelMixin, UpdateModelMixin, ListModelMixin, RetrieveModelMixin, DestroyModelMixin, GenericViewSet):
 class UserCustomViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
 	queryset = User.objects.all()
-	serializer_class = UserModelSerializer
+	# serializer_class = UserModelSerializer
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
 	# permission_classes = [AllowAny]
+
+	def get_serializer_class(self):
+		if self.request.version == 'v1':
+			return UserSerializerWithSuperUser
+		return UserModelSerializer
+
+
+
 
 #######################
 # class UserModelViewSet(ModelViewSet):
