@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 	'project',
 	'django_filters',
 	'drf_yasg',
+	'graphene_django',
 
 
 ]
@@ -172,6 +173,9 @@ REST_FRAMEWORK = {
 if DEBUG:
 	REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].append('rest_framework.renderers.BrowsableAPIRenderer')
 
+GRAPHENE = {
+	'SCHEMA': 'todo_list.schema.schema'
+}
 
 # SIMPLE_JWT = {
 #     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
