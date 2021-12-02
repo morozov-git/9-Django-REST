@@ -8,10 +8,10 @@ from project.models import Project
 class ToDoModelSerializer(ModelSerializer):
 	class Meta:
 		model = ToDo
-		# fields = '__all__'
+		fields = '__all__'
 		# fields = ['name', 'project', 'description_todo', 'owner', 'is_close', 'is_active']
 		# fields = ['name', 'project', 'description_todo', 'is_close', 'is_active']
-		fields = ['name', 'description_todo']
+		# fields = ['name', 'description_todo', 'users']
 
 
 class ToDoModelSerializerWithParams(ModelSerializer):

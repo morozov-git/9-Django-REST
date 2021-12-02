@@ -26,6 +26,8 @@ class ToDoCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin, Up
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
 
 
+
+
 	def get_serializer_class(self):
 		if self.request.version == 'v1':
 			return ToDoModelSerializerWithParams

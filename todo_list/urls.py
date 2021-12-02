@@ -68,7 +68,7 @@ urlpatterns = [
 	path('swagger/', schema_view.with_ui('swagger')),
 	path('swagger<str:format>/', schema_view.without_ui()),
 	path('redoc/', schema_view.with_ui('redoc')),
-	path('graphql/', GraphQLView.as_view(graphql=True)),
+	path('graphql/', GraphQLView.as_view(graphiql=True)),
 	# path('api/users/v1/', include('users.urls', namespace='v1')),
 	# path('api/users/v2/', include('users.urls', namespace='v2')),
 	# path('api/<str:version>/users', UserCustomViewSet.as_view({'get': 'list'})),
