@@ -11,14 +11,14 @@ class ProjectModelSerializer(ModelSerializer):
 		model = Project
 		# fields = '__all__'
 		# fields = ['name', 'description_project',  'owner', 'is_active']
-		fields = ['name', 'description_project', 'is_active']
+		fields = ['id', 'name', 'description_project', 'is_active', 'users']
 
 
 class ProjectModelSerializerWithParams(ModelSerializer):
 	class Meta:
 		model = Project
 		# fields = '__all__'
-		fields = fields = ['name', 'description_project',  'owner', 'is_active']
+		fields = fields = ['id', 'name', 'description_project',  'users', 'is_active']
 
 	def get_tokens_for_todo(model):
 		refresh = RefreshToken.for_project(model)

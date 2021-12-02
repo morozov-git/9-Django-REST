@@ -10,9 +10,9 @@ from users.models import User
 # Create your models here.
 class ToDo(models.Model):
 	name = models.CharField(max_length=64)
-	project = models.OneToOneField(max_length=64, blank=True, null=True, to=Project, on_delete=models.CASCADE)
+	project = models.ManyToManyField(blank=True, null=True, to=Project)
 	description_todo = models.TextField(verbose_name='описание', blank=True, null=True)
-	user = models.ManyToManyField(User, null=False, db_index=True)
+	users = models.ManyToManyField(User, db_index=True)
 	# user = models.ManyToOneRel(User, to=User, field_name=User.id, on_delete=models.CASCADE)
 	# users = models.ManyToManyField(User, blank=True)
 	link = models.URLField(verbose_name='ссылка', unique=False, blank=True)

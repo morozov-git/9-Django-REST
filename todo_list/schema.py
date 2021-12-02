@@ -15,10 +15,15 @@ class UserType(DjangoObjectType):
 		fields = '__all__'
 
 
-# 1.Создали тип для описания ToDo
+# 1.Создали тип для описания ToDo и Project
 # 2.DjangoObjectType = позволяет автоматически создать
 # нужные типы полей для указанной модели и указать нужные поля!!
 class ToDoType(DjangoObjectType):
+	class Meta:
+		model = ToDo
+		fields = '__all__'
+
+class ProjectType(DjangoObjectType):
 	class Meta:
 		model = ToDo
 		fields = '__all__'
@@ -46,6 +51,15 @@ class Query(ObjectType):
 		todo_list = ToDo.objects.all()
 		if user_id:
 			todo_list = ToDo.objects.filter(user=user_id)
+		return todo_list
+
+	todo_by_project = graphene.List(ProjectType, project_name=graphene.String(required=False))
+
+	def resolve_todo_by_project(self, info, project_name=None):
+		project_id = Project.objects.get(name=project_name).id
+		todo_list = ToDo.objects.all()
+		if project_id:
+			todo_list = ToDo.objects.filter(project=project_id)
 		return todo_list
 
 schema = graphene.Schema(query=Query)
