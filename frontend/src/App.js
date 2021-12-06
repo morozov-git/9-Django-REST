@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import UserList from './components/user.js'
 import ToDoList from './components/todo.js'
+import ToDoForm from "./components/todoform";
 import ProjectList from './components/project.js'
 import MenuFixed from './components/menu.js'
 import Footer from './components/footer.js'
@@ -24,6 +25,25 @@ class App extends React.Component {
         }
     }
 
+    deleteToDo(id){
+        const headers = this.get_headers()
+        console.log(id)
+        axios.delete(`http://127.0.0.1:8000/api/todo/${id}`, {headers})
+            .then(response => {
+                // this.setState(
+                //     {
+                //         'todo_list': this.state.todo_list.filter((todo) => todo.id !=id)
+                //     }
+                // )
+                this.load_data()
+            }).catch(error => {
+                console.log(error)
+                this.setState({users:[]})
+            })
+    }
+
+
+
     load_data() {
         const headers = this.get_headers()
         axios.get('http://127.0.0.1:8000/api/users/', {headers})
@@ -42,10 +62,14 @@ class App extends React.Component {
 
         axios.get('http://127.0.0.1:8000/api/todo/', {headers})
             .then(response => {
-                const todo_list = response.data
+                // const todo_list = response.data
+                const todo_list = response.data.results.filter(
+                    (item) => item.is_close !=true
+                )
                 this.setState(
                     {
-                        'todo_list': todo_list.results
+                        // 'todo_list': todo_list.results
+                        'todo_list': todo_list
                     }
                 )
             }).catch(error => {
@@ -198,9 +222,24 @@ class App extends React.Component {
                     {/*<Link to='/login'>Login</Link>*/}
 
                     <Switch>
-                        <Route exact path='/' component={() => <UserList users={this.state.users}/>}/>
-                        <Route exact path='/todo_list' component={() => <ToDoList todo_list={this.state.todo_list}/>}/>
-                        <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
+                        <Route exact path='/'
+                               component={() => <UserList
+                                   users={this.state.users}/>}/>
+                        <Route exact path='/todo_list'
+                               component={() => <ToDoList
+                                   todo_list={this.state.todo_list}
+                                   deleteToDo={(id)=>this.deleteToDo(id)}
+                               />}/>
+
+                       <Route exact path='/todo_list/create'
+                                component={() => <ToDoForm
+                                   // todo_list={this.state.todo_list}
+                                   // deleteToDo={(id)=>this.deleteToDo(id)}
+                                    />}/>
+
+                        <Route exact path='/projects'
+                               component={() => <ProjectList
+                                   projects={this.state.projects}/>}/>
                         <Route path='/project/:id'>
                             {/*<ToDoList_Project todo_list={this.state.todo_list}/>}/>*/}
                         </Route>
