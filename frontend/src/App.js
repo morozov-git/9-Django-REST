@@ -35,7 +35,7 @@ class App extends React.Component {
         const headers = this.get_headers()
         const data = {name: name, description_todo:description_todo, users:[users], project:[project]}
         console.log(data)
-        axios.create(`http://127.0.0.1:8000/api/todo/`, data, {headers})
+        axios.post(`http://127.0.0.1:8000/api/todo/`, data, {headers})
             .then(response => {
                 // this.setState(
                 //     {
