@@ -33,7 +33,7 @@ class App extends React.Component {
 
     createToDo(name, description_todo, users, project){
         const headers = this.get_headers()
-        const data = {name: name, description_todo:description_todo, users:[users], project:[project]}
+        const data = {name: name, description_todo:description_todo, users:users, project:project}
         console.log(data)
         axios.post(`http://127.0.0.1:8000/api/todo/`, data, {headers})
             .then(response => {
@@ -249,12 +249,17 @@ class App extends React.Component {
                         <Route exact path='/todo_list'
                                component={() => <ToDoList
                                    todo_list={this.state.todo_list}
+                                   users={this.state.users}
+                                   projects={this.state.projects}
                                    deleteToDo={(id)=>this.deleteToDo(id)}
                                />}/>
 
                        <Route exact path='/todo_list/create'
                                 component={() => <ToDoForm
                                    createToDo={(name, description_todo, users, project) => this.createToDo(name, description_todo, users, project)}
+                                   users={this.state.users}
+                                   projects={this.state.projects}
+
                                    // deleteToDo={(id)=>this.deleteToDo(id)}
                                     />}/>
 

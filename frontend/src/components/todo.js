@@ -2,21 +2,37 @@ import React from 'react'
 import {HashRouter, Link} from "react-router-dom";
 
 
-const ToDoItem = ({todo, deleteToDo}) => {
+const ToDoItem = ({todo, users, projects, deleteToDo}) => {
     return (
         <tr>
             <td>
-                {todo.is_close}
+                {todo.is_active ? 'yes':'no'}
             </td>
             <td>
                 {todo.name}
             </td>
             <td>
-                {todo.project}
-            </td>
-            <td>
                 {todo.description_todo}
             </td>
+            <td>
+                {/*{todo.project}*/}
+                {todo.project.map((projectId)=>{
+                    let project = projects.find((project)=>project.id == projectId)
+                    if (project) {
+                        return project.name
+                    }
+                })}
+            </td>
+            <td>
+                {/*{todo.users + ' , '}*/}
+                {todo.users.map((userId)=>{
+                    let user = users.find((user)=>user.id == userId)
+                    if (user) {
+                        return user.username + ', '
+                    }
+                })}
+            </td>
+
             {/*<td>*/}
             {/*    {todo.owner}*/}
             {/*</td>*/}
@@ -28,26 +44,29 @@ const ToDoItem = ({todo, deleteToDo}) => {
     )
 }
 
-const ToDoList = ({todo_list, deleteToDo}) => {
+const ToDoList = ({todo_list, users, projects, deleteToDo}) => {
     return (
         <div>
             <table className="todo-margin-top">
                 <th>
-                    Done
+                    Active
                 </th>
                 <th>
                     Name
                 </th>
                 <th>
+                    Description
+                </th>
+                <th>
                     Project
                 </th>
                 <th>
-                    Description
+                    Users
                 </th>
                 <th>
                     Delete
                 </th>
-                {todo_list.map((todo) => <ToDoItem todo={todo} deleteToDo={deleteToDo}/>)}
+                {todo_list.map((todo) => <ToDoItem todo={todo} users={users} projects={projects} deleteToDo={deleteToDo}/>)}
                 {/*{todo_list.map((todo) => <ToDoItem todo={todo}/>)}*/}
                 {/*{todo_list.map((todo) => <ToDoItem todo={todo}/>)}*/}
                 {/*{todo_list.map((todo) => <ToDoItem todo={todo}/>)}*/}
