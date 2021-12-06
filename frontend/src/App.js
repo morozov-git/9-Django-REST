@@ -25,6 +25,32 @@ class App extends React.Component {
         }
     }
 
+
+
+
+
+
+
+    createToDo(name, description_todo, users, project){
+        const headers = this.get_headers()
+        const data = {name: name, description_todo:description_todo, users:[users], project:[project]}
+        console.log(data)
+        axios.create(`http://127.0.0.1:8000/api/todo/`, data, {headers})
+            .then(response => {
+                // this.setState(
+                //     {
+                //         'todo_list': this.state.todo_list.filter((todo) => todo.id !=id)
+                //     }
+                // )
+                this.load_data()
+            }).catch(error => {
+                console.log(error)
+                this.setState({users:[]})
+            })
+    }
+
+
+
     deleteToDo(id){
         const headers = this.get_headers()
         console.log(id)
@@ -233,7 +259,7 @@ class App extends React.Component {
 
                        <Route exact path='/todo_list/create'
                                 component={() => <ToDoForm
-                                   // todo_list={this.state.todo_list}
+                                   createToDo={(name, description_todo, users, project) => this.createToDo(name, description_todo, users, project)}
                                    // deleteToDo={(id)=>this.deleteToDo(id)}
                                     />}/>
 

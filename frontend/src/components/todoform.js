@@ -3,7 +3,7 @@ import React from 'react'
 class ToDoForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {name: '', description_todo: '', user: 0, project: 0}
+        this.state = {name: '', description_todo: '', users: 0, project: 0}
     }
 
     handleChange(event) {
@@ -16,7 +16,9 @@ class ToDoForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.name + ' ' + this.state.description_todo + ' ' + this.state.user + ' ' + this.state.project)
+        console.log(this.state.name + ' ' + this.state.description_todo + ' ' + this.state.users + ' ' + this.state.project)
+
+        this.props.createToDo(this.state.name, this.state.description_todo, this.state.users, this.state.project)
         event.preventDefault()
     }
 
@@ -30,17 +32,17 @@ class ToDoForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label htmlFor="description_todo">Description</label>
-                    <input type="text" className="form-control" name="description" value={this.state.description_todo}
+                    <input type="text" className="form-control" name="description_todo" value={this.state.description_todo}
+                           onChange={(event) => this.handleChange(event)}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="users">Users</label>
+                    <input type="number" className="form-control" name="users" value={this.state.users}
                            onChange={(event) => this.handleChange(event)}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="project">Project</label>
                     <input type="number" className="form-control" name="project" value={this.state.project}
-                           onChange={(event) => this.handleChange(event)}/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="user">User</label>
-                    <input type="number" className="form-control" name="user" value={this.state.user}
                            onChange={(event) => this.handleChange(event)}/>
                 </div>
 
