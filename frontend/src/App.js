@@ -37,11 +37,6 @@ class App extends React.Component {
         console.log(data)
         axios.post(`http://127.0.0.1:8000/api/todo/`, data, {headers})
             .then(response => {
-                // this.setState(
-                //     {
-                //         'todo_list': this.state.todo_list.filter((todo) => todo.id !=id)
-                //     }
-                // )
                 this.load_data()
             }).catch(error => {
                 console.log(error)
