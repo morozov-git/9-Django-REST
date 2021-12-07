@@ -19,6 +19,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            'username':'',
             'users': [],
             'todo_list': [],
             'projects': [],
@@ -99,9 +100,8 @@ class App extends React.Component {
                     {
                         'projects': projects
                     })
-        }
-        if (url.indexOf('todo_list') !== -1){
-            // console.log('project');
+        } else if (url.indexOf('todo_list') !== -1){
+            // console.log('todo_list');
             const todo_list = this.state.todo_list.filter(
                     (item) => item.name.indexOf(search) !== -1 || item.description_todo.indexOf(search) !== -1)
             console.log(todo_list);
@@ -111,20 +111,6 @@ class App extends React.Component {
                     })
         }
         event.preventDefault()
-        // const headers = this.get_headers()
-        // axios.get('http://127.0.0.1:8000/api/users/', {headers})
-        //     .then(response => {
-        //         const users = response.data
-        //         this.setState(
-        //             {
-        //                 'users': users.results
-        //             }
-        //         )
-        //     }).catch(error => {
-        //     console.log(error)
-        //     this.setState({users: []})
-        // })
-
     }
 
     load_data() {
@@ -184,10 +170,12 @@ class App extends React.Component {
     logout() {
         this.set_token('')
         this.setState({
+            'username':'',
             'users': [],
             'todo_list': [],
             'projects': [],
             'token': '',
+            'search': '',
         })
     }
 
@@ -197,6 +185,7 @@ class App extends React.Component {
         // console.log('token', token)
         // this.setState({'token': token}, ()=>this.load_data())
         localStorage.setItem('token', token)
+
     }
 
 
@@ -204,7 +193,11 @@ class App extends React.Component {
         console.log(username, password)
         axios.post('http://127.0.0.1:8000/api-token-auth/', {username: username, password: password})
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
+                // console.log(username)
+                // this.setState({'username': username})
+                // console.log(this.state.username)
+                // console.log(response.config.data)
                 this.set_token(response.data['token'])
                 console.log(response.data['token'])
                 window.location.href = '/'
