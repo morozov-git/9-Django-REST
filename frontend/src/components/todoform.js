@@ -117,7 +117,7 @@ class ToDoForm extends React.Component {
 
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Project</span>
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Users</span>
                     </div>
                 {/*<div className="form-group">*/}
                 {/*    <label htmlFor="users">Users</label>*/}

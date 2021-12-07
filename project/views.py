@@ -29,7 +29,12 @@ class ProjectCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
 			return ProjectModelSerializerWithParams
 		return ProjectModelSerializer
 
-
+	# def destroy(self, request, *args, **kwargs):
+	# 	project = self.get_object()
+	# 	project.is_active = False
+	# 	project.save()
+	# 	serializer = self.get_serializer(project)
+	# 	return Response(serializer.data)
 
 #######################
 # class ProjectModelViewSet(ModelViewSet):
