@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 # from rest_framework.authtoken.views import obtain_auth_token
+from django.views.generic import TemplateView
 from graphene_django.views import GraphQLView
 from rest_framework import permissions
 from rest_framework.routers import DefaultRouter
@@ -69,6 +70,7 @@ urlpatterns = [
 	path('swagger<str:format>/', schema_view.without_ui()),
 	path('redoc/', schema_view.with_ui('redoc')),
 	path('graphql/', GraphQLView.as_view(graphiql=True)),
+	path('', TemplateView.as_view(template_name='index.html')),
 	# path('api/users/v1/', include('users.urls', namespace='v1')),
 	# path('api/users/v2/', include('users.urls', namespace='v2')),
 	# path('api/<str:version>/users', UserCustomViewSet.as_view({'get': 'list'})),
