@@ -6,7 +6,7 @@ import ToDoList from './components/todo.js'
 import ToDoForm from "./components/todoform";
 import ProjectList from './components/project.js'
 import ProjectForm from "./components/projectform";
-import MenuFixed from './components/menu.js'
+// import MenuFixed from './components/menu.js'
 import Footer from './components/footer.js'
 import NotFound404 from "./components/NotFound404.js";
 import axios from 'axios'
@@ -23,6 +23,7 @@ class App extends React.Component {
             'todo_list': [],
             'projects': [],
             'token': '',
+            'search': '',
         }
     }
 
@@ -82,6 +83,49 @@ class App extends React.Component {
         })
     }
 
+    searchFilter(event){
+        this.state.url  = event.target.baseURI
+        console.log(this.state.search + ' ' + this.state.url)
+        let url = this.state.url
+        let search = this.state.search
+
+        const headers = this.get_headers()
+        if (url.indexOf('projects') !== -1){
+            // console.log('project');
+            const projects = this.state.projects.filter(
+                    (item) => item.name.indexOf(search) !== -1 || item.description_project.indexOf(search) !== -1)
+            console.log(projects);
+            this.setState(
+                    {
+                        'projects': projects
+                    })
+        }
+        if (url.indexOf('todo_list') !== -1){
+            // console.log('project');
+            const todo_list = this.state.todo_list.filter(
+                    (item) => item.name.indexOf(search) !== -1 || item.description_todo.indexOf(search) !== -1)
+            console.log(todo_list);
+            this.setState(
+                    {
+                        'todo_list': todo_list
+                    })
+        }
+        event.preventDefault()
+        // const headers = this.get_headers()
+        // axios.get('http://127.0.0.1:8000/api/users/', {headers})
+        //     .then(response => {
+        //         const users = response.data
+        //         this.setState(
+        //             {
+        //                 'users': users.results
+        //             }
+        //         )
+        //     }).catch(error => {
+        //     console.log(error)
+        //     this.setState({users: []})
+        // })
+
+    }
 
     load_data() {
         const headers = this.get_headers()
@@ -196,6 +240,14 @@ class App extends React.Component {
         this.setState({'token': token}, () => this.load_data())
     }
 
+    handleChange(event) {
+        this.setState(
+            {
+                [event.target.name]: event.target.value
+            }
+        )
+    }
+
     componentDidMount() {
         // this.load_data()
         this.get_token_from_storage()
@@ -231,18 +283,87 @@ class App extends React.Component {
     }
 
 
+
     render() {
         return (
             <div className="full_page">
+                <div className="menu-fixed">
+                <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                    <div className="container-fluid">
+                        <a className="navbar-brand" href="/">TO-DO list</a>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarCollapse"
+                                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarCollapse">
+                            <ul className="navbar-nav me-auto mb-2 mb-md-0">
+                                <li className="nav-item">
+                                    {/*<a className="nav-link active" aria-current="page" href="#">Home</a>*/}
+                                    <a className="nav-link active" aria-current="page" href='/'>Users</a>
+                                </li>
+                                <li className="nav-item">
+                                    {/*<a className="nav-link" href="#">ToDoName</a>*/}
+                                    <a className="nav-link active" aria-current="page" href='/todo_list'>ToDo List</a>
+                                </li>
+                                <li className="nav-item">
+                                    {/*<a className="nav-link" href="#">ProjectName</a>*/}
+                                    <a className="nav-link active" aria-current="page" href='/projects'>Projects</a>
+                                </li>
+                                <li className="nav-item">
+
+                                </li>
+
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown01"
+                                       data-bs-toggle="dropdown" aria-expanded="false">UserName</a>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdown01">
+                                        <li><a className="dropdown-item" href="#">ToDo</a></li>
+                                        <li><a className="dropdown-item" href="#">Projects</a></li>
+                                        <li><a className="dropdown-item" href="#">Profile</a></li>
+
+                                        {/*<Route path='/login' component={() =><LoginForm/>}/>*/}
+
+                                        {/*<li><a className="dropdown-item disabled" href="#">Logout</a></li>*/}
+
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <form className="d-flex" onSubmit={(event) => this.searchFilter(event)}>
+                                {/*<input className="form-control me-2" placeholder="Search"*/}
+                                {/*       name="search" type="text" value={this.state.search}/>*/}
+                                <div>
+                                    <input type="text"
+                                           className="form-control me-2"
+                                           name="search"
+                                           value={this.state.search}
+                                           aria-describedby="inputGroup-sizing-sm"
+                                           placeholder="Search"
+                                           onChange={(event) => this.handleChange(event)}
+
+                                    />
+                                </div>
+
+
+                                <input type="submit" className="btn btn-outline-success" value="Search"/>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
                 {/*<MenuFixed/>*/}
                 {/*<UserList users={this.state.users}/>*/}
 
-                <HashRouter>
+                <BrowserRouter>
 
-                    <MenuFixed/>
+                    {/*<MenuFixed/>*/}
+
                     {this.is_auth() ? <Link className="dropdown-item" onClick={() => this.logout()}> Logout</Link> :
                         <Link className="dropdown-item" to='/login'>Login</Link>
                     }
+
                     {/*<nav>*/}
                     {/*    <ul>*/}
                     {/*        <li>*/}
@@ -280,6 +401,13 @@ class App extends React.Component {
                                    // deleteToDo={(id)=>this.deleteToDo(id)}
                                />}/>
 
+                        {/*<Route exact path='/search'*/}
+                        {/*       component={() => <searchFilter*/}
+                        {/*           searchFilter={(search, url) => this.searchFilter(search, url)}*/}
+                        {/*           search={this.state.search}*/}
+                        {/*           url={this.state.url}*/}
+                        {/*       />}/>*/}
+
                         <Route exact path='/projects'
                                component={() => <ProjectList
                                    projects={this.state.projects}
@@ -304,7 +432,7 @@ class App extends React.Component {
                         <Route component={NotFound404}/>
                     </Switch>
 
-                </HashRouter>
+                </BrowserRouter>
 
                 <Footer/>
             </div>

@@ -31,11 +31,16 @@ ALLOWED_HOSTS = [
 	'*',
 	'http://localhost:3000',
 	'http://127.0.0.1:3000',
+	'http://localhost:8000',
+	'http://127.0.0.1:8000',
 ]
 
 CORS_ALLOWED_ORIGINS = [
 	"http://localhost:3000",
 	"http://127.0.0.1:3000",
+	"http://localhost:8000",
+	"http://127.0.0.1:8000",
+
 ]
 
 # Application definition
@@ -78,7 +83,7 @@ TEMPLATES = [
 	{
 		'BACKEND': 'django.template.backends.django.DjangoTemplates',
 		# 'DIRS': [BASE_DIR / 'templates']
-		'DIRS': [BASE_DIR / 'frontend/build']
+		'DIRS': [BASE_DIR / 'frontend/build/']
 		,
 		'APP_DIRS': True,
 		'OPTIONS': {
@@ -153,13 +158,13 @@ REST_FRAMEWORK = {
 		'rest_framework.renderers.JSONRenderer',
 	],
 	'DEFAULT_PERMISSION_CLASSES': [
-		# 'rest_framework.permissions.IsAuthenticated',
+		'rest_framework.permissions.IsAuthenticated',
 		# 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
 	],
 	'DEFAULT_AUTHENTICATION_CLASSES': [
 		'rest_framework.authentication.BasicAuthentication',
-		'rest_framework.authentication.SessionAuthentication',
 		'rest_framework.authentication.TokenAuthentication',
+		# 'rest_framework.authentication.SessionAuthentication',
 		# 'rest_framework_simplejwt.authentication.JWTAuthentication',
 	],
 
