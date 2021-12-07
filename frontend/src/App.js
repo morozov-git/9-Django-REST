@@ -297,11 +297,11 @@ class App extends React.Component {
                                 </li>
                                 <li className="nav-item">
                                     {/*<a className="nav-link" href="#">ToDoName</a>*/}
-                                    <a className="nav-link active" aria-current="page" href='/todo_list'>ToDo List</a>
+                                    <a className="nav-link active" aria-current="page" href='/#/todo_list'>ToDo List</a>
                                 </li>
                                 <li className="nav-item">
                                     {/*<a className="nav-link" href="#">ProjectName</a>*/}
-                                    <a className="nav-link active" aria-current="page" href='/projects'>Projects</a>
+                                    <a className="nav-link active" aria-current="page" href='/#/projects'>Projects</a>
                                 </li>
                                 <li className="nav-item">
 
@@ -349,7 +349,7 @@ class App extends React.Component {
                 {/*<MenuFixed/>*/}
                 {/*<UserList users={this.state.users}/>*/}
 
-                <BrowserRouter>
+                <HashRouter>
 
                     {/*<MenuFixed/>*/}
 
@@ -425,7 +425,7 @@ class App extends React.Component {
                         <Route component={NotFound404}/>
                     </Switch>
 
-                </BrowserRouter>
+                </HashRouter>
 
                 <Footer/>
             </div>
