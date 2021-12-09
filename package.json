@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "axios": "^0.24.0",
+    "universal-cookie": "^4.0.4"
+  }
+}
