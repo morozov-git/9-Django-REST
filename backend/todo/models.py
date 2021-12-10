@@ -11,7 +11,7 @@ from users.models import User
 # Create your models here.
 class ToDo(models.Model):
 	name = models.CharField(max_length=64)
-	project = models.ManyToManyField(blank=True, to=Project)
+	project = models.ManyToManyField(Project, blank=True)
 	description_todo = models.TextField(verbose_name='описание', blank=True, null=True)
 	users = models.ManyToManyField(User, db_index=True)
 	# user = models.ManyToOneRel(User, to=User, field_name=User.id, on_delete=models.CASCADE)
