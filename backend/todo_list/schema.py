@@ -1,9 +1,9 @@
 import graphene
 from graphene import ObjectType
 from graphene_django import DjangoObjectType
-from todo.models import ToDo
-from users.models import User
-from project.models import Project
+from backend.todo.models import ToDo
+from backend.users.models import User
+from backend.project.models import Project
 
 
 # """ Запросы с параметрами """

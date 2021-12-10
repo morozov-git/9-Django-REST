@@ -2,6 +2,7 @@ from django.db import models
 
 from project.models import Project
 from users.models import User
+
 # from project.models import Project
 # Create your models here.
 

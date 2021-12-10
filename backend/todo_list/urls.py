@@ -79,5 +79,6 @@ urlpatterns = [
 	# path('users/api-view/', views.UserAPIVIew.as_view()),
 	# path('users/generic/retrieve/<int:pk>/', views.UserRetrieveAPIView.as_view())
 	# path('users/viewsets/', include(router.urls)),
+#
 
 ]

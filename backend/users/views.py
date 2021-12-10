@@ -82,7 +82,7 @@ from rest_framework.decorators import action
 
 ####################
 #class UserCustomViewSet(CreateModelMixin, UpdateModelMixin, ListModelMixin, RetrieveModelMixin, DestroyModelMixin, GenericViewSet):
-class UserCustomViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
+class UserCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin, GenericViewSet):
 	queryset = User.objects.all()
 	# serializer_class = UserModelSerializer
 	renderer_classes = [JSONRenderer, BrowsableAPIRenderer]

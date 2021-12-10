@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from users.views import UserCustomViewSet
+from backend.users.views import UserCustomViewSet
 
 app_name = 'users'
 
@@ -24,3 +24,8 @@ urlpatterns = [
 	path('', UserCustomViewSet.as_view({'get': 'list'})),
 
 ]
+
+
+
+
+
