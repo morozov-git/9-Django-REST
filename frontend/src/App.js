@@ -293,7 +293,7 @@ class App extends React.Component {
                             <ul className="navbar-nav me-auto mb-2 mb-md-0">
                                 <li className="nav-item">
                                     {/*<a className="nav-link active" aria-current="page" href="#">Home</a>*/}
-                                    <a className="nav-link active" aria-current="page" href='/'>Users</a>
+                                    <a className="nav-link active" aria-current="page" href='/#'>Users</a>
                                 </li>
                                 <li className="nav-item">
                                     {/*<a className="nav-link" href="#">ToDoName</a>*/}
