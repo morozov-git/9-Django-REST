@@ -10,6 +10,19 @@ services:
       POSTGRES_USER: todo-user
       POSTGRES_PASSWORD: 123qweA!
       POSTGRES_DB: todo-db
+  backend:
+    build: ./backend
+    privileged: true
+    ports:
+      - 8080:8080
+    command:
+      bash -c "
+      python manage.py migrate
+      && python manage.py create_admin
+      && python manage.py runserver 0.0.0.0:8080
+      "
+    depends_on:
+      - db
 
 
 
