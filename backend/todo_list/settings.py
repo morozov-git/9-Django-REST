@@ -27,6 +27,17 @@ SECRET_KEY = 'django-insecure-4fo9y(yu(y3qhuxd*1!4@2@jnt=xad9wx)v+mq8&jb+3$l2vm0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = [
+	"http://127.0.0.1:3000",
+	"http://0.0.0.0:3000",
+	"http://localhost:3000",
+	"http://127.0.0.1:8000",
+	"http://0.0.0.0:8000",
+	"http://localhost:8000",
+]
+
 ALLOWED_HOSTS = [
 	'*',
 	'http://localhost:3000',
@@ -38,9 +49,10 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
 	"http://localhost:3000",
 	"http://127.0.0.1:3000",
+	"http://0.0.0.0:3000",
 	"http://localhost:8000",
 	"http://127.0.0.1:8000",
-
+	"http://0.0.0.0:8000",
 ]
 
 # Application definition
@@ -63,13 +75,12 @@ INSTALLED_APPS = [
 	'drf_yasg',
 	'graphene_django',
 
-
 ]
 
 MIDDLEWARE = [
+	'corsheaders.middleware.CorsMiddleware',
 	'django.middleware.security.SecurityMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
-	'corsheaders.middleware.CorsMiddleware',
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -102,25 +113,23 @@ WSGI_APPLICATION = 'todo_list.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-# 	'default': {
-# 		'ENGINE': 'django.db.backends.sqlite3',
-# 		'NAME': BASE_DIR / 'db.sqlite3',
-# 	}
-# }
-
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': 'todo-db',
-		'USER': 'todo-user',
-		'PASSWORD': '123qweA!',
-		'HOST': 'db',
-		'PORT': 5432,
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': BASE_DIR / 'db.sqlite3',
 	}
 }
 
-
+# DATABASES = {
+# 	'default': {
+# 		'ENGINE': 'django.db.backends.postgresql',
+# 		'NAME': 'todo-db',
+# 		'USER': 'todo-user',
+# 		'PASSWORD': '123qweA!',
+# 		'HOST': 'db',
+# 		'PORT': 5432,
+# 	}
+# }
 
 
 # Password validation
