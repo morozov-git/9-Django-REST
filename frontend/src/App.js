@@ -129,7 +129,7 @@ class App extends React.Component {
         })
 
 
-        axios.get('http://0.0.0.0:8000/api/todo/', {headers})
+        axios.get('http://127.0.0.1:8000/api/todo/', {headers})
             .then(response => {
                 // const todo_list = response.data
                 const todo_list = response.data.results.filter(
@@ -147,7 +147,7 @@ class App extends React.Component {
         })
 
 
-        axios.get('http://0.0.0.0:8000/api/project/', {headers})
+        axios.get('http://127.0.0.1:8000/api/project/', {headers})
             .then(response => {
                 const projects = response.data
                 this.setState(
@@ -191,7 +191,7 @@ class App extends React.Component {
 
     get_token(username, password) {
         console.log(username, password)
-        axios.post('http://151.248.125.182:8000/api-token-auth/', {username: username, password: password})
+        axios.post('http://127.0.0.1:8000/api-token-auth/', {username: username, password: password})
             .then(response => {
                 // console.log(response.data)
                 // console.log(username)
