@@ -137,7 +137,7 @@ DATABASES = {
 		'NAME': 'todo-db',
 		'USER': 'todo-user',
 		'PASSWORD': '123qweA!',
-		'HOST': '0.0.0.0',
+		'HOST': '172.18.0.2',
 		'PORT': 5432,
 	}
 }
