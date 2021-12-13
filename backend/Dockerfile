@@ -1,4 +1,4 @@
-from python:3.9
+from python:3.9.1
 
 RUN pip install --upgrade pip
 COPY ./ ./
