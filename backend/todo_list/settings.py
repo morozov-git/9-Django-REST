@@ -37,17 +37,18 @@ DEBUG = True
 # 	'http://0.0.0.0:8000',
 # 	'http://localhost:8000',
 # ]
-# CORS_ALLOW_HEADERS = [
-# 	'accept',
-# 	'accept-encoding',
-# 	'authorization',
-# 	'content-type',
-# 	'dnt',
-# 	'origin',
-# 	'user-agent',
-# 	'x-csrftoken',
-# 	'x-requested-with',
-# ]
+
+CORS_ALLOW_HEADERS = [
+	'accept',
+	'accept-encoding',
+	'authorization',
+	'content-type',
+	'dnt',
+	'origin',
+	'user-agent',
+	'x-csrftoken',
+	'x-requested-with',
+]
 
 ALLOWED_HOSTS = [
 	'*',
@@ -55,10 +56,8 @@ ALLOWED_HOSTS = [
 	'http://127.0.0.1:3000',
 	'http://localhost:8000',
 	'http://127.0.0.1:8000',
-	'http://127.0.0.1',
 	'http://0.0.0.0:8000',
 	'http://0.0.0.0:3000',
-	'http://0.0.0.0',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -68,11 +67,12 @@ CORS_ALLOWED_ORIGINS = [
 	'http://localhost:8000',
 	'http://127.0.0.1:8000',
 	'http://0.0.0.0:8000',
+	'http://0.0.0.0:80',
+	'http://localhost:80',
+	'http://127.0.0.1:80',
 	'http://127.0.0.1',
 	'http://0.0.0.0',
 	'http://localhost',
-	'http://localhost:80',
-	'http://127.0.0.1:80',
 ]
 
 # Application definition
