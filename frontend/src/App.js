@@ -191,7 +191,8 @@ class App extends React.Component {
 
     get_token(username, password) {
         console.log(username, password)
-        axios.post('http://127.0.0.1:8000/api-token-auth/', {username: username, password: password})
+        let headers = this.get_headers()
+        axios.post('http://127.0.0.1:8000/api-token-auth/', {username: username, password: password}, {headers})
             .then(response => {
                 console.log(response.data)
                 // console.log(username)
@@ -220,7 +221,7 @@ class App extends React.Component {
         let headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Host': '<calculated when request is sent>'
+            'Host': '127.0.0.1',
 
         }
         if (this.is_auth()) {
