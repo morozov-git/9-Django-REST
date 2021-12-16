@@ -19,7 +19,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            'username':'',
+            'username': '',
             'users': [],
             'todo_list': [],
             'projects': [],
@@ -84,31 +84,31 @@ class App extends React.Component {
         })
     }
 
-    searchFilter(event){
-        this.state.url  = event.target.baseURI
+    searchFilter(event) {
+        this.state.url = event.target.baseURI
         console.log(this.state.search + ' ' + this.state.url)
         let url = this.state.url
         let search = this.state.search
 
         const headers = this.get_headers()
-        if (url.indexOf('projects') !== -1){
+        if (url.indexOf('projects') !== -1) {
             // console.log('project');
             const projects = this.state.projects.filter(
-                    (item) => item.name.indexOf(search) !== -1 || item.description_project.indexOf(search) !== -1)
+                (item) => item.name.indexOf(search) !== -1 || item.description_project.indexOf(search) !== -1)
             console.log(projects);
             this.setState(
-                    {
-                        'projects': projects
-                    })
-        } else if (url.indexOf('todo_list') !== -1){
+                {
+                    'projects': projects
+                })
+        } else if (url.indexOf('todo_list') !== -1) {
             // console.log('todo_list');
             const todo_list = this.state.todo_list.filter(
-                    (item) => item.name.indexOf(search) !== -1 || item.description_todo.indexOf(search) !== -1)
+                (item) => item.name.indexOf(search) !== -1 || item.description_todo.indexOf(search) !== -1)
             console.log(todo_list);
             this.setState(
-                    {
-                        'todo_list': todo_list
-                    })
+                {
+                    'todo_list': todo_list
+                })
         }
         event.preventDefault()
     }
@@ -170,7 +170,7 @@ class App extends React.Component {
     logout() {
         this.set_token('')
         this.setState({
-            'username':'',
+            'username': '',
             'users': [],
             'todo_list': [],
             'projects': [],
@@ -278,76 +278,85 @@ class App extends React.Component {
     }
 
 
-
     render() {
         return (
             <div className="full_page">
                 <div className="menu-fixed">
-                <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                    <div className="container-fluid">
-                        <a className="navbar-brand" href="/">TO-DO list</a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarCollapse"
-                                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarCollapse">
-                            <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                                <li className="nav-item">
-                                    {/*<a className="nav-link active" aria-current="page" href="#">Home</a>*/}
-                                    <a className="nav-link active" aria-current="page" href='/#'>Users</a>
-                                </li>
-                                <li className="nav-item">
-                                    {/*<a className="nav-link" href="#">ToDoName</a>*/}
-                                    <a className="nav-link active" aria-current="page" href='/#/todo_list'>ToDo List</a>
-                                </li>
-                                <li className="nav-item">
-                                    {/*<a className="nav-link" href="#">ProjectName</a>*/}
-                                    <a className="nav-link active" aria-current="page" href='/#/projects'>Projects</a>
-                                </li>
-                                <li className="nav-item">
+                    <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                        <div className="container-fluid">
+                            <a className="navbar-brand" href="/">TO-DO list</a>
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarCollapse"
+                                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbarCollapse">
+                                <ul className="navbar-nav me-auto mb-2 mb-md-0">
+                                    <li className="nav-item">
+                                        {/*<a className="nav-link active" aria-current="page" href="#">Home</a>*/}
+                                        <a className="nav-link active" aria-current="page" href='/#'>Users</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        {/*<a className="nav-link" href="#">ToDoName</a>*/}
+                                        <a className="nav-link active" aria-current="page" href='/#/todo_list'>ToDo
+                                            List
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        {/*<a className="nav-link" href="#">ProjectName</a>*/}
+                                        <a className="nav-link active" aria-current="page" href='/#/projects'>Projects
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
 
-                                </li>
+                                    </li>
 
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown01"
-                                       data-bs-toggle="dropdown" aria-expanded="false">UserName</a>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdown01">
-                                        <li><a className="dropdown-item" href="#">ToDo</a></li>
-                                        <li><a className="dropdown-item" href="#">Projects</a></li>
-                                        <li><a className="dropdown-item" href="#">Profile</a></li>
+                                    <li className="nav-item dropdown">
+                                        <a className="nav-link dropdown-toggle" href="#" id="dropdown01"
+                                           data-bs-toggle="dropdown" aria-expanded="false">UserName
+                                        </a>
+                                        <ul className="dropdown-menu" aria-labelledby="dropdown01">
+                                            <li>
+                                                <a className="dropdown-item" href="#">ToDo</a>
+                                            </li>
+                                            <li>
+                                                <a className="dropdown-item" href="#">Projects</a>
+                                            </li>
+                                            <li>
+                                                <a className="dropdown-item" href="#">Profile</a>
+                                            </li>
 
-                                        {/*<Route path='/login' component={() =><LoginForm/>}/>*/}
+                                            {/*<Route path='/login' component={() =><LoginForm/>}/>*/}
 
-                                        {/*<li><a className="dropdown-item disabled" href="#">Logout</a></li>*/}
-
-
-                                    </ul>
-                                </li>
-
-                            </ul>
-                            <form className="d-flex" onSubmit={(event) => this.searchFilter(event)}>
-                                {/*<input className="form-control me-2" placeholder="Search"*/}
-                                {/*       name="search" type="text" value={this.state.search}/>*/}
-                                <div>
-                                    <input type="text"
-                                           className="form-control me-2"
-                                           name="search"
-                                           value={this.state.search}
-                                           aria-describedby="inputGroup-sizing-sm"
-                                           placeholder="Search"
-                                           onChange={(event) => this.handleChange(event)}
-
-                                    />
-                                </div>
+                                            {/*<li><a className="dropdown-item disabled" href="#">Logout</a></li>*/}
 
 
-                                <input type="submit" className="btn btn-outline-success" value="Search"/>
-                            </form>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                                <form className="d-flex" onSubmit={(event) => this.searchFilter(event)}>
+                                    {/*<input className="form-control me-2" placeholder="Search"*/}
+                                    {/*       name="search" type="text" value={this.state.search}/>*/}
+                                    <div>
+                                        <input type="text"
+                                               className="form-control me-2"
+                                               name="search"
+                                               value={this.state.search}
+                                               aria-describedby="inputGroup-sizing-sm"
+                                               placeholder="Search"
+                                               onChange={(event) => this.handleChange(event)}
+
+                                        />
+                                    </div>
+
+
+                                    <input type="submit" className="btn btn-outline-success" value="Search"/>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </nav>
-            </div>
+                    </nav>
+                </div>
                 {/*<MenuFixed/>*/}
                 {/*<UserList users={this.state.users}/>*/}
 
@@ -355,7 +364,7 @@ class App extends React.Component {
 
                     {/*<MenuFixed/>*/}
 
-                    {this.is_auth() ? <Link className="dropdown-item" onClick={() => this.logout()}> Logout</Link> :
+                    {this.is_auth() ? <Link className="dropdown-item" onClick={() => this.logout()}>Logout</Link> :
                         <Link className="dropdown-item" to='/login'>Login</Link>
                     }
 
