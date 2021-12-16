@@ -27,27 +27,27 @@ SECRET_KEY = 'django-insecure-4fo9y(yu(y3qhuxd*1!4@2@jnt=xad9wx)v+mq8&jb+3$l2vm0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 
-# CORS_ORIGIN_WHITELIST = [
-# 	'http://127.0.0.1:3000',
-# 	'http://0.0.0.0:3000',
-# 	'http://localhost:3000',
-# 	'http://127.0.0.1:8000',
-# 	'http://0.0.0.0:8000',
-# 	'http://localhost:8000',
-# ]
-# CORS_ALLOW_HEADERS = [
-# 	'accept',
-# 	'accept-encoding',
-# 	'authorization',
-# 	'content-type',
-# 	'dnt',
-# 	'origin',
-# 	'user-agent',
-# 	'x-csrftoken',
-# 	'x-requested-with',
-# ]
+CORS_ORIGIN_WHITELIST = [
+	'http://127.0.0.1:3000',
+	'http://0.0.0.0:3000',
+	'http://localhost:3000',
+	'http://127.0.0.1:8000',
+	'http://0.0.0.0:8000',
+	'http://localhost:8000',
+]
+CORS_ALLOW_HEADERS = [
+	'accept',
+	'accept-encoding',
+	'authorization',
+	'content-type',
+	'dnt',
+	'origin',
+	'user-agent',
+	'x-csrftoken',
+	'x-requested-with',
+]
 
 ALLOWED_HOSTS = [
 	'*',
@@ -55,24 +55,15 @@ ALLOWED_HOSTS = [
 	'http://127.0.0.1:3000',
 	'http://localhost:8000',
 	'http://127.0.0.1:8000',
-	'http://127.0.0.1',
-	'http://0.0.0.0:8000',
-	'http://0.0.0.0:3000',
-	'http://0.0.0.0',
 ]
 
 CORS_ALLOWED_ORIGINS = [
-	'http://localhost:3000',
-	'http://127.0.0.1:3000',
-	'http://0.0.0.0:3000',
-	'http://localhost:8000',
-	'http://127.0.0.1:8000',
-	'http://0.0.0.0:8000',
-	'http://127.0.0.1',
-	'http://0.0.0.0',
-	'http://localhost',
-	'http://localhost:80',
-	'http://127.0.0.1:80',
+	"http://localhost:3000",
+	"http://127.0.0.1:3000",
+	"http://0.0.0.0:3000",
+	"http://localhost:8000",
+	"http://127.0.0.1:8000",
+	"http://0.0.0.0:8000",
 ]
 
 # Application definition
@@ -146,7 +137,7 @@ DATABASES = {
 		'NAME': 'todo-db',
 		'USER': 'todo-user',
 		'PASSWORD': '123qweA!',
-		'HOST': '0.0.0.0',
+		'HOST': 'db',
 		'PORT': 5432,
 	}
 }
