@@ -40,7 +40,7 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ALLOW_HEADERS = [
 	'accept',
 	'accept-encoding',
-	'authorization',
+	'Authorization',
 	'content-type',
 	'dnt',
 	'origin',
@@ -64,6 +64,8 @@ CORS_ALLOWED_ORIGINS = [
 	"http://localhost:8000",
 	"http://127.0.0.1:8000",
 	"http://0.0.0.0:8000",
+	"http://0.0.0.0:80",
+	"http://0.0.0.0",
 	"http://127.0.0.1",
 	"http://localhost",
 	"http://localhost:80",
