@@ -220,6 +220,7 @@ class App extends React.Component {
         let headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
+            'Host': '<calculated when request is sent>'
 
         }
         if (this.is_auth()) {
