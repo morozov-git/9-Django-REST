@@ -10,6 +10,12 @@ services:
       POSTGRES_USER: todo-user
       POSTGRES_PASSWORD: 123qweA!
       POSTGRES_DB: todo-db
+  frontend:
+    build: ./frontend
+    ports:
+      - 80:80
+    depends_on:
+      - db
   backend:
     build: ./backend
     privileged: true
@@ -22,19 +28,14 @@ services:
       && gunicorn todo_list.wsgi -b 0.0.0.0:8080
       "
     depends_on:
-      - db
+      - frontend
   nginx:
    build: ./nginx
    ports:
      - 8000:80
    depends_on:
      - backend
-  frontend:
-   build: ./frontend
-   ports:
-     - 80:80
-   depends_on:
-     - nginx
+
 
 
 
