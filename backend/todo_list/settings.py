@@ -37,17 +37,17 @@ DEBUG = True
 # 	'http://0.0.0.0:8000',
 # 	'http://localhost:8000',
 # ]
-CORS_ALLOW_HEADERS = [
-	'accept',
-	'accept-encoding',
-	'authorization',
-	'content-type',
-	'dnt',
-	'origin',
-	'user-agent',
-	'x-csrftoken',
-	'x-requested-with',
-]
+# CORS_ALLOW_HEADERS = [
+# 	'accept',
+# 	'accept-encoding',
+# 	'authorization',
+# 	'content-type',
+# 	'dnt',
+# 	'origin',
+# 	'user-agent',
+# 	'x-csrftoken',
+# 	'x-requested-with',
+# ]
 
 ALLOWED_HOSTS = [
 	'*',
