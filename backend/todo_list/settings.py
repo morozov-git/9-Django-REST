@@ -29,14 +29,14 @@ DEBUG = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = [
-	'http://127.0.0.1:3000',
-	'http://0.0.0.0:3000',
-	'http://localhost:3000',
-	'http://127.0.0.1:8000',
-	'http://0.0.0.0:8000',
-	'http://localhost:8000',
-]
+# CORS_ORIGIN_WHITELIST = [
+# 	'http://127.0.0.1:3000',
+# 	'http://0.0.0.0:3000',
+# 	'http://localhost:3000',
+# 	'http://127.0.0.1:8000',
+# 	'http://0.0.0.0:8000',
+# 	'http://localhost:8000',
+# ]
 CORS_ALLOW_HEADERS = [
 	'accept',
 	'accept-encoding',
@@ -58,12 +58,16 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-	"http://localhost:3000",
-	"http://127.0.0.1:3000",
-	"http://0.0.0.0:3000",
-	"http://localhost:8000",
-	"http://127.0.0.1:8000",
-	"http://0.0.0.0:8000",
+	'http://localhost:3000',
+	'http://127.0.0.1:3000',
+	'http://0.0.0.0:3000',
+	'http://localhost:8000',
+	'http://127.0.0.1:8000',
+	'http://0.0.0.0:8000',
+	'http://127.0.0.1',
+	'http://localhost',
+	'http://localhost:80',
+	'http://127.0.0.1:80',
 ]
 
 # Application definition
