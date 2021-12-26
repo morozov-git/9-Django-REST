@@ -47,7 +47,8 @@ class ProjectCustomViewSet(CreateModelMixin, ListModelMixin, RetrieveModelMixin,
 # 		if name:
 # 			Project = Project.filter(name__contains=name)
 # 		return Project
-
+#
+#
 
 ##############DjangoFilter
 class ProjectDjangoFilterViewSet(ModelViewSet):
