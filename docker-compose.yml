@@ -13,14 +13,17 @@ services:
   backend:
     build: ./backend
     privileged: true
+    volumes:
+    - ./backend:/code/
     ports:
       - 8080:8080
     command:
+#      && gunicorn todo_list.wsgi -b 0.0.0.0:8080
       bash -c "
       python manage.py makemigrations
       && python manage.py migrate
       && python manage.py create_admin
-      && gunicorn todo_list.wsgi -b 0.0.0.0:8080
+      && sleep infinity
       "
     depends_on:
       - db

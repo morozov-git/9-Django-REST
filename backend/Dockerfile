@@ -5,5 +5,7 @@ COPY ./ ./
 RUN pip install -r requairements1.txt
 RUN pip install gunicorn
 
+WORKDIR /code/
+
 
 
