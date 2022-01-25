@@ -1,1 +1,3 @@
 /docker-compose.txt
+__pycache__
+.idea
